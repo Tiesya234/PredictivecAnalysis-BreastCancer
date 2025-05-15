@@ -183,6 +183,55 @@ Fitur-fitur yang distandarisasi adalah sebagai berikut:
 - `Regional Node Examined`
 - `Reginol Node Positive`
 - `Survival Months`
+## Modeling
+
+Pada tahap ini, dilakukan pembangunan model klasifikasi untuk memprediksi status kelangsungan hidup pasien kanker payudara (alive atau dead) berdasarkan data klinis. Lima algoritma machine learning diterapkan dan dibandingkan performanya, yaitu:
+
+- AdaBoostClassifier
+- LinearDiscriminantAnalysis
+- RandomForestClassifier
+- LogisticRegression
+- LGBMClassifier
+
+Pemilihan algoritma dilakukan untuk membandingkan berbagai pendekatan seperti model linear, ensembel, dan boosting.
+
+### Tahapan Modeling
+
+Setiap model dilatih menggunakan data hasil preprocessing dan diuji menggunakan metrik klasifikasi yang meliputi: **accuracy**, **precision**, **recall**, dan **f1-score** untuk masing-masing kelas (Alive dan Dead).
+
+### Hasil Evaluasi Model
+
+| Model                     | Accuracy | F1-score (Alive) | F1-score (Dead) |
+|---------------------------|----------|------------------|-----------------|
+| AdaBoostClassifier        | 91%      | 0.94             | 0.68            |
+| LinearDiscriminantAnalysis| 90%      | 0.94             | 0.66            |
+| RandomForestClassifier    | 91%      | 0.95             | 0.69            |
+| LogisticRegression        | 90%      | 0.94             | 0.66            |
+| LGBMClassifier            | 89%      | 0.93             | 0.61            |
+
+- Semua model menunjukkan akurasi tinggi (>89%).  
+- RandomForestClassifier memiliki performa tertinggi untuk kelas mayoritas (Alive).  
+- AdaBoostClassifier dan LinearDiscriminantAnalysis memberikan trade-off yang baik antara akurasi dan kompleksitas.  
+
+### Kesimpulan Model Terbaik
+
+- Jika ingin model yang **akurat dan seimbang** untuk kedua kelas, **AdaBoostClassifier** direkomendasikan.  
+- Untuk model yang **ringan dan cepat** namun tetap efektif, **LogisticRegression** atau **LinearDiscriminantAnalysis** dapat dipilih.  
+- Jika fokus pada prediksi kuat untuk pasien yang **masih hidup (Alive)**, **RandomForestClassifier** adalah pilihan yang tepat.  
+
+Pemilihan model terbaik dapat disesuaikan dengan kebutuhan sistem dan tujuan aplikasi, terutama terkait sensitivitas terhadap pasien berisiko tinggi (kelas Dead).
+
+## Evaluation
+
+Model dievaluasi menggunakan metrik klasifikasi sebagai berikut:
+
+- **Accuracy**: Proporsi prediksi yang benar dari total prediksi.  
+- **Precision**: Kemampuan model menghindari false positive.  
+- **Recall**: Kemampuan model dalam mendeteksi semua kasus positif.  
+- **F1-Score**: Rata-rata harmonis dari precision dan recall, terutama penting saat data tidak seimbang.
+
+Dengan metrik ini, proyek memastikan bahwa model tidak hanya akurat secara keseluruhan, tetapi juga mampu mengenali kasus pasien yang berisiko tinggi secara efektif.
+
 
 
 
