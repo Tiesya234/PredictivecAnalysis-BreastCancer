@@ -109,13 +109,20 @@ Distribusi fitur numerikal menunjukkan:
 #### 3. Visualisasi Bivariat: Hubungan Fitur dan Target (`Status`)
 
 ![BivariateAnalysis1](img/BivariateAnalysis1.png)  
+![BivariateAnalysis2](img/BivariateAnalysis2.png)  
+![BivariateAnalysis3](img/BivariateAnalysis3.png)  
+![BivariateAnalysis4](img/BivariateAnalysis4.png)  
 Boxplot dan barplot digunakan untuk mengevaluasi hubungan antara fitur dan target `Status`:
 
 - Pasien dengan `Tumor Size` yang lebih besar cenderung memiliki probabilitas lebih tinggi untuk berstatus `Dead`.
 - Pasien dengan stadium lanjut (`T Stage` T3 atau `A Stage` III/IV) terlihat lebih sering berstatus `Dead` dibandingkan dengan pasien pada stadium awal.
 - Nilai `Regional Node Positive` juga cenderung lebih tinggi pada pasien yang tidak bertahan hidup.
 
-![BivariateAnalysis2](img/BivariateAnalysis2.png)  
+![BivariateAnalysis2.1](img/BivariateAnalysis2.1.png)  
+![BivariateAnalysis2.2](img/BivariateAnalysis2.2.png)  
+![BivariateAnalysis2.3](img/BivariateAnalysis2.3.png)  
+![BivariateAnalysis2.4](img/BivariateAnalysis2.4.png)  
+![BivariateAnalysis2.5](img/BivariateAnalysis2.5.png)  
 Hubungan antara `Survival Months` dan `Status` sangat jelas: pasien `Alive` cenderung memiliki waktu survival yang jauh lebih panjang dibanding yang `Dead`. Korelasi ini sangat penting dan dapat dimanfaatkan sebagai fitur prediktif kuat.
 
 #### 4. Heatmap Korelasi Antar Variabel Numerik
