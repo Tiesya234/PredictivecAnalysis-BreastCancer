@@ -83,7 +83,7 @@ Beberapa tahapan eksplorasi data telah dilakukan untuk memahami karakteristik da
 
 #### 1. Visualisasi Boxplot untuk Mengidentifikasi Outliers
 
-![Outliner Sebelum](img/outliers_sebelum.png)  
+![Outliner Sebelum](img/outlier_sebelum.png)  
 Dari visualisasi boxplot terhadap fitur numerik seperti `Tumor Size`, `Regional Node Examined`, `Regional Node Positive`, dan `Survival Months`, ditemukan adanya sejumlah nilai pencilan (outliers). Outliers ini berpotensi mempengaruhi distribusi data dan performa model, sehingga perlu ditangani pada tahap preprocessing.
 
 #### 2. Visualisasi Univariat: Distribusi Fitur
