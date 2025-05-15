@@ -145,7 +145,7 @@ Untuk memastikan kualitas data yang baik sebelum pelatihan model, langkah pertam
 - **Lower Bound** = Q1 - 1.5 × IQR  
 - **Upper Bound** = Q3 + 1.5 × IQR
 
-![Outliner Sesudah](img/outliner_sesudah.png)  
+![Outliner Sesudah](img/outlier_sesudah.png)  
 Outlier yang ditemukan pada fitur seperti `Tumor Size`, `Survival Months`, dan `Regional Node Examined` dihapus untuk menjaga stabilitas distribusi data. Setelah penghapusan, jumlah sampel berkurang, namun data menjadi lebih representatif dan bebas dari nilai ekstrem.
 
 ### 2. Encoding Fitur Kategorikal
