@@ -83,7 +83,7 @@ Beberapa tahapan eksplorasi data telah dilakukan untuk memahami karakteristik da
 
 #### 1. Visualisasi Boxplot untuk Mengidentifikasi Outliers
 
-![Outliner Sebelum](img/outliner_sebelum.png)  
+![Outliner Sebelum](img/outliers_sebelum.png)  
 Dari visualisasi boxplot terhadap fitur numerik seperti `Tumor Size`, `Regional Node Examined`, `Regional Node Positive`, dan `Survival Months`, ditemukan adanya sejumlah nilai pencilan (outliers). Outliers ini berpotensi mempengaruhi distribusi data dan performa model, sehingga perlu ditangani pada tahap preprocessing.
 
 #### 2. Visualisasi Univariat: Distribusi Fitur
@@ -98,7 +98,7 @@ Visualisasi menggunakan countplot menunjukkan distribusi fitur kategorikal seper
 - Sebagian besar pasien berada pada `T Stage` T2, yang mengindikasikan ukuran tumor sedang.
 - Untuk `Status`, terdapat distribusi yang cukup berimbang antara pasien `Alive` dan `Dead`, meskipun sedikit lebih banyak yang `Alive`.
 
-![UnivariateAnalysis2](img/UnivariateAnalysis2.png)  
+![UnivariateAnalysis2.2](img/UnivariateAnalysis2.2.png)  
 Distribusi fitur numerikal menunjukkan:
 
 - `Age` terdistribusi antara 20 hingga 90 tahun, dengan konsentrasi pada usia 50–70 tahun.
