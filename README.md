@@ -91,7 +91,7 @@ Dari visualisasi boxplot terhadap fitur numerik seperti `Tumor Size`, `Regional 
 ![UnivariateAnalysis1](img/UnivariateAnalysis1.png)  
 ![UnivariateAnalysis2](img/UnivariateAnalysis2.png)  
 ![UnivariateAnalysis3](img/UnivariateAnalysis3.png)  
-![UnivariateAnalysis4](img/UnivariateAnalysis3.png)  
+![UnivariateAnalysis4](img/UnivariateAnalysis4.png)  
 Visualisasi menggunakan countplot menunjukkan distribusi fitur kategorikal seperti `Race`, `Marital Status`, `T Stage`, dan `Status`. Beberapa insight yang ditemukan:
 
 - Mayoritas pasien berasal dari ras `White`, diikuti oleh `Black` dan `Asian/Pacific Islander`.
