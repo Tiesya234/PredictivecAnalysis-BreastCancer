@@ -3,10 +3,7 @@
 ## Domain Proyek: Kesehatan
 
 ### Latar Belakang
-Kanker payudara merupakan penyebab kematian tertinggi akibat kanker pada perempuan di seluruh dunia. Meskipun banyak penelitian berfokus pada deteksi dini kanker payudara, tantangan besar lainnya adalah memahami dan memprediksi kelangsungan hidup pasien setelah diagnosis. Prediksi yang akurat terhadap kemungkinan seorang pasien bertahan hidup dapat membantu dalam perencanaan perawatan, pengambilan keputusan klinis, serta memfokuskan sumber daya medis secara lebih efektif.
-
-Penerapan machine learning dalam bidang kesehatan telah menunjukkan potensi yang besar dalam meningkatkan akurasi diagnosis dan prognosis. Studi oleh Pires et al. (2021) menunjukkan bahwa algoritma machine learning seperti Support Vector Machine, Random Forest, dan Logistic Regression dapat mencapai akurasi tinggi dalam klasifikasi diagnosis kanker payudara (ganas atau jinak). Meskipun studi tersebut fokus pada tahap diagnosis, pendekatan yang sama dapat diperluas untuk prediksi kelangsungan hidup pasien, dengan menggunakan data klinis lanjutan seperti ukuran tumor, jumlah node limfa positif, dan lama bertahan hidup.
-
+Kanker payudara merupakan penyebab kematian tertinggi akibat kanker pada perempuan di seluruh dunia. Meskipun banyak penelitian berfokus pada deteksi dini kanker payudara, tantangan besar lainnya adalah memahami dan memprediksi kelangsungan hidup pasien setelah diagnosis. Prediksi yang akurat terhadap kemungkinan seorang pasien bertahan hidup dapat membantu dalam perencanaan perawatan, pengambilan keputusan klinis, serta memfokuskan sumber daya medis secara lebih efektif.Penerapan machine learning dalam bidang kesehatan telah menunjukkan potensi yang besar dalam meningkatkan akurasi diagnosis dan prognosis. Studi oleh Pires et al. (2021) menunjukkan bahwa algoritma machine learning seperti Support Vector Machine, Random Forest, dan Logistic Regression dapat mencapai akurasi tinggi dalam klasifikasi diagnosis kanker payudara (ganas atau jinak). Meskipun studi tersebut fokus pada tahap diagnosis, pendekatan yang sama dapat diperluas untuk prediksi kelangsungan hidup pasien, dengan menggunakan data klinis lanjutan seperti ukuran tumor, jumlah node limfa positif, dan lama bertahan hidup.
 Dengan memanfaatkan data klinis dan algoritma machine learning, proyek ini bertujuan untuk membangun model prediksi yang dapat mengklasifikasikan pasien kanker payudara ke dalam dua kelompok utama: alive atau dead. Model ini diharapkan dapat membantu dalam penyusunan strategi perawatan yang lebih tepat sasaran dan personalisasi pengobatan bagi penderita kanker payudara.
 
 ### Referensi
@@ -18,41 +15,63 @@ Dengan memanfaatkan data klinis dan algoritma machine learning, proyek ini bertu
 
 ### Problem Statements
 
-- Bagaimana memprediksi status kelangsungan hidup pasien kanker payudara (alive atau dead) berdasarkan data klinis seperti ukuran tumor, jumlah kelenjar getah bening positif, dan lama bertahan hidup?
-- Apa saja fitur klinis yang paling berpengaruh terhadap prediksi status kelangsungan hidup pasien kanker payudara?
-- Bagaimana cara meningkatkan akurasi prediksi untuk membantu pengambilan keputusan medis yang lebih baik?
+- Bagaimana memprediksi status kelangsungan hidup pasien kanker payudara (Alive atau Dead) berdasarkan data klinis seperti ukuran tumor, jumlah kelenjar getah bening positif, dan lama bertahan hidup?
+- Fitur klinis mana yang paling berpengaruh terhadap prediksi status pasien?
+- Algoritma klasifikasi mana yang memberikan performa terbaik dalam tugas prediksi tersebut?
 
 ### Goals
 
-- Membangun model klasifikasi machine learning yang dapat memprediksi apakah pasien kanker payudara akan hidup atau meninggal berdasarkan fitur klinis.
-- Mengidentifikasi variabel-variabel penting yang paling memengaruhi kelangsungan hidup pasien.
-- Menyediakan solusi berbasis data yang dapat digunakan untuk mendukung keputusan medis dan rencana perawatan yang lebih personal.
+- Mengembangkan model klasifikasi machine learning untuk memprediksi status hidup atau meninggal pasien kanker payudara.
+- Mengidentifikasi fitur klinis yang paling berkontribusi terhadap prediksi model.
+- Membandingkan performa beberapa algoritma klasifikasi (AdaBoost, LDA, Random Forest, Logistic Regression, dan LGBM) guna menemukan model terbaik berdasarkan metrik evaluasi.
 
 ### Solution Statements
 
-Untuk mencapai tujuan proyek, pendekatan berikut dilakukan:
+Untuk mencapai tujuan proyek, beberapa langkah solusi dirancang dan diimplementasikan sebagai berikut:
 
-- Menerapkan dan membandingkan performa lima algoritma klasifikasi machine learning:
-1. **AdaBoostClassifier** – algoritma boosting yang kuat untuk mengurangi bias dan varians.
-2. **LinearDiscriminantAnalysis (LDA)** – model statistik klasik untuk klasifikasi dengan asumsi distribusi normal.
-3. **RandomForestClassifier** – algoritma ensemble berbasis decision tree yang andal dan tahan terhadap overfitting.
-4. **LogisticRegression** – model linear yang sederhana dan interpretable untuk klasifikasi biner.
-5. **LGBMClassifier (LightGBM)** – algoritma gradient boosting yang cepat dan efisien untuk dataset skala besar.
+1. **Proses Data Preprocessing**
+   - Menghapus outlier untuk meningkatkan kualitas data dan stabilitas model.
+   - Melakukan encoding pada variabel kategorikal agar dapat digunakan oleh algoritma machine learning.
+   - Menyeimbangkan dataset dengan teknik undersampling untuk mengatasi class imbalance antara status 'Alive' dan 'Dead'.
+   - Membagi data menjadi set pelatihan dan pengujian untuk validasi performa model.
 
-- Melakukan proses *data preprocessing* seperti penghapusan outliers, encoding variabel kategorikal, undersampling dataset, dan pembagian data train-test.
+2. **Penerapan dan Perbandingan Algoritma Klasifikasi**
+   
+   Lima algoritma machine learning digunakan dan dibandingkan performanya:
+   - **ExtraTreesClassifier**  : Algoritma ensemble yang menggunakan banyak pohon keputusan dengan pembangkitan acak untuk meningkatkan variasi dan mengurangi overfitting.
+   - **RandomForestClassifier** : Ensemble pohon keputusan dengan teknik bagging dan pemilihan fitur acak untuk stabilitas dan akurasi yang tinggi.
+   - **XGBClassifier** : Algoritma gradient boosting yang membangun pohon secara berurutan untuk mengoreksi kesalahan model sebelumnya dengan efisiensi tinggi.
+   - **DecisionTreeClassifier** : Model pohon keputusan tunggal yang mudah diinterpretasi namun rentan overfitting tanpa pembatasan.
+   - **BaggingClassifier** : Metode ensemble yang membangun beberapa model dasar pada subset data acak dan menggabungkan hasilnya untuk mengurangi varians.
 
-- Melakukan evaluasi performa masing-masing model menggunakan metrik klasifikasi seperti:
-  - **Accuracy** – untuk melihat proporsi prediksi benar.
-  - **Precision dan Recall** – untuk memahami trade-off antara false positive dan false negative.
-  - **F1-Score** – untuk menyeimbangkan precision dan recall terutama saat kelas tidak seimbang.
- 
-  
+3. **Evaluasi Model**
+   
+   Kinerja masing-masing model diukur menggunakan beberapa metrik evaluasi klasifikasi:
+   - **Accuracy**: Mengukur proporsi prediksi yang benar dari total prediksi.
+   - **Precision** dan **Recall**: Digunakan untuk memahami trade-off antara false positives dan false negatives.
+   - **F1-Score**: Rata-rata harmonis antara precision dan recall, cocok untuk data dengan distribusi kelas yang tidak seimbang.
+
+Model dengan performa terbaik berdasarkan metrik evaluasi akan dipilih sebagai solusi akhir dari proyek ini.
+
 ## Data Understanding
+### Informasi Dataset
 
-Dataset yang digunakan dalam proyek ini adalah "Breast Cancer" dari Kaggle:  
-https://www.kaggle.com/datasets/reihanenamdari/breast-cancer
+| Keterangan       | Detail                            |
+|------------------|------------------------------------|
+| Jumlah data      | 4024 baris                        |
+| Jumlah fitur     | 16 kolom                          |
+| Target           | `Status` (Alive / Dead)           |
+| Format           | CSV                               |
+| Sumber           |[Kaggle - Breast Cancer Survival Dataset] (https://www.kaggle.com/datasets/reihanenamdari/breast-cancer) |
 
-Dataset ini berisi informasi klinis dan demografis pasien kanker payudara, dengan tujuan untuk memprediksi status kelangsungan hidup pasien (`Status`: Alive atau Dead). Dataset terdiri dari 4.024 baris data dan 16 kolom fitur.
+### Contoh Data
+| Age | Race                | Marital Status | T Stage | N Stage | 6th Stage | differentiate | Grade | A Stage | Tumor Size | Estrogen Status | Progesterone Status | Regional Node Examined | Reginol Node Positive | Survival Months | Status |
+|-----|---------------------|----------------|---------|---------|-----------|---------------|-------|---------|------------|-----------------|---------------------|-----------------------|-----------------------|-----------------|-----|
+| 59  | White               | Married        | T2      | N0      | IIA       | Moderate      | 2     | II      | 35         | Positive        | Positive            | 3                     | 0                     | 85              |Alive|
+| 65  | Black               | Single         | T3      | N1      | IIIA      | Poor          | 3     | III     | 45         | Negative        | Negative            | 6                     | 3                     | 40              | Dead   |
+| 47  | Asian/Pacific Islander | Married      | T1      | N0      | IB        | Well          | 1     | I       | 12         | Positive        | Positive            | 1                     | 0                     | 120             | Alive  |
+| 58  | White               | Widowed        | T2      | N2      | IIB       | Moderate      | 2     | II      | 30         | Negative        | Positive            | 4                     | 2                     | 60              | Dead   |
+| 62  | Hispanic            | Married        | T2      | N0      | IIA       | Poor          | 3     | II      | 40         | Positive        | Negative            | 2                     | 1                     | 75              | Alive  |
 
 ### Deskripsi Fitur
 
@@ -77,62 +96,51 @@ Berikut adalah penjelasan dari masing-masing fitur pada dataset:
 
 Beberapa tahapan eksplorasi data telah dilakukan untuk memahami karakteristik dataset, antara lain:
 
- ## Eksplorasi Data
-
-Beberapa tahapan eksplorasi data telah dilakukan untuk memahami karakteristik dataset, antara lain:
-
 #### 1. Visualisasi Boxplot untuk Mengidentifikasi Outliers
 
 ![Outliner Sebelum](img/outlier_sebelum.png)  
-Dari visualisasi boxplot terhadap fitur numerik seperti `Tumor Size`, `Regional Node Examined`, `Regional Node Positive`, dan `Survival Months`, ditemukan adanya sejumlah nilai pencilan (outliers). Outliers ini berpotensi mempengaruhi distribusi data dan performa model, sehingga perlu ditangani pada tahap preprocessing.
+Berdasarkan visualisasi boxplot pada beberapa fitur numerik dalam dataset, mayoritas pasien berusia antara 47 hingga 65 tahun dengan usia minimum sekitar 30 tahun dan tidak terdapat outlier signifikan pada fitur usia. Untuk ukuran tumor, sebagian besar berada di rentang 15 hingga 40 mm, namun terdapat banyak outlier di atas 70 mm yang menunjukkan adanya pasien dengan ukuran tumor yang jauh lebih besar. 
+Pada fitur jumlah kelenjar getah bening yang diperiksa (Regional Node Examined), mayoritas pasien memiliki antara 5 hingga 25 kelenjar, namun beberapa pasien memiliki jumlah kelenjar diperiksa lebih dari 50 sebagai outlier. Sedangkan untuk jumlah kelenjar getah bening positif (Regional Node Positive), mayoritas pasien memiliki 0 hingga 5 kelenjar positif, tetapi terdapat banyak outlier dengan jumlah positif lebih dari 10 hingga lebih dari 40. Masa bertahan hidup pasien (Survival Months) sebagian besar berkisar antara 50 hingga 100 bulan, dengan beberapa pasien yang memiliki masa hidup sangat singkat di bawah 10 bulan sebagai outlier.
+Kesimpulannya, fitur Tumor Size, Regional Node Examined, dan Regional Node Positive menunjukkan distribusi yang miring dan memiliki outlier, sementara Age dan Survival Months relatif lebih seimbang. Insight ini penting sebagai dasar untuk melakukan transformasi data atau penanganan outlier pada tahap preprocessing guna meningkatkan performa model machine learning.
 
-#### 2. Visualisasi Univariat: Distribusi Fitur
+
+#### 2. Visualisasi Univariat
+- Distribusi Fitur Kategorikal
 
 ![UnivariateAnalysis1](img/UnivariateAnalysis1.png)  
 ![UnivariateAnalysis2](img/UnivariateAnalysis2.png)  
 ![UnivariateAnalysis3](img/UnivariateAnalysis3.png)  
 ![UnivariateAnalysis4](img/UnivariateAnalysis4.png)  
-Visualisasi menggunakan countplot menunjukkan distribusi fitur kategorikal seperti `Race`, `Marital Status`, `T Stage`, dan `Status`. Beberapa insight yang ditemukan:
+Distribusi dari kolom kategorikal menunjukkan bahwa mayoritas pasien berasal dari ras *White* dan berstatus menikah, dengan kelompok tumor paling banyak berada pada stadium menengah seperti T1 dan T2 pada T Stage, serta N0 dan N1 pada N Stage. Stadium kanker menurut sistem TNM edisi ke-6 didominasi oleh stadium IIA, IIB, dan IIIA. Tingkat diferensiasi tumor yang paling umum adalah moderate, dengan Grade 2 yang paling dominan, menunjukkan tingkat keparahan sedang pada mayoritas kasus. Hampir seluruh pasien berada pada stadium regional (A Stage). Dari sisi reseptor hormonal, status positif pada estrogen dan progesteron mendominasi, yang biasanya berkaitan dengan prognosis lebih baik.
 
-- Mayoritas pasien berasal dari ras `White`, diikuti oleh `Black` dan `Asian/Pacific Islander`.
-- Sebagian besar pasien berada pada `T Stage` T2, yang mengindikasikan ukuran tumor sedang.
-- Untuk `Status`, terdapat distribusi yang cukup berimbang antara pasien `Alive` dan `Dead`, meskipun sedikit lebih banyak yang `Alive`.
-
+- Distribusi Fitur Numerik
 ![UnivariateAnalysis2.2](img/UnivariateAnalysis2.2.png)  
-Distribusi fitur numerikal menunjukkan:
+Distribusi dari kolom numerik menunjukkan bahwa umur pasien berkisar antara 30 hingga 70 tahun dengan puncak frekuensi pada usia 50-60 tahun. Ukuran tumor sebagian besar kecil, antara 10 sampai 30 mm, dengan distribusi yang sangat miring ke kanan karena adanya beberapa tumor berukuran besar. Jumlah kelenjar getah bening yang diperiksa umumnya berada pada rentang 10 sampai 20, dan mayoritas pasien tidak memiliki banyak kelenjar getah bening yang positif terinfeksi kanker. Lama bertahan hidup pasien tersebar dengan mayoritas di rentang 50 hingga 100 bulan, dengan kecenderungan banyak pasien bertahan hidup cukup lama.
 
-- `Age` terdistribusi antara 20 hingga 90 tahun, dengan konsentrasi pada usia 50–70 tahun.
-- `Tumor Size` menunjukkan skew ke kanan, artinya sebagian besar tumor berukuran kecil hingga sedang, namun terdapat beberapa kasus tumor berukuran besar.
-- `Survival Months` sangat bervariasi, namun terlihat beberapa outliers pada nilai survival yang sangat panjang atau sangat pendek.
-- `Regional Node Examined` dan `Regional Node Positive` juga menunjukkan nilai-nilai ekstrim.
-
-#### 3. Visualisasi Bivariat: Hubungan Fitur dan Target (`Status`)
+#### 3. Visualisasi Bivariat
+- Kolom Kategorikal terhadap kolom status:
 
 ![BivariateAnalysis1](img/BivariateAnalysis1.png)  
 ![BivariateAnalysis2](img/BivariateAnalysis2.png)  
 ![BivariateAnalysis3](img/BivariateAnalysis3.png)  
 ![BivariateAnalysis4](img/BivariateAnalysis4.png)  
-Boxplot dan barplot digunakan untuk mengevaluasi hubungan antara fitur dan target `Status`:
 
-- Pasien dengan `Tumor Size` yang lebih besar cenderung memiliki probabilitas lebih tinggi untuk berstatus `Dead`.
-- Pasien dengan stadium lanjut (`T Stage` T3 atau `A Stage` III/IV) terlihat lebih sering berstatus `Dead` dibandingkan dengan pasien pada stadium awal.
-- Nilai `Regional Node Positive` juga cenderung lebih tinggi pada pasien yang tidak bertahan hidup.
+Berdasarkan analisis bivariate antara kolom kategorikal dengan kolom target Status, dapat disimpulkan bahwa terdapat pola yang cukup konsisten antara karakteristik klinis dan demografis pasien dengan kemungkinan kelangsungan hidup mereka. Pasien yang masih hidup cenderung memiliki karakteristik stadium awal, baik dari segi T Stage, N Stage, maupun 6th Stage dan A Stage. Hal ini mengindikasikan bahwa semakin dini kanker terdeteksi dan ditangani, semakin tinggi pula peluang kelangsungan hidup pasien. Selain itu, pasien dengan tingkat diferensiasi sel yang baik (Well differentiated) dan grade yang lebih rendah memiliki kemungkinan bertahan hidup yang lebih tinggi dibandingkan mereka yang memiliki sel kanker dengan diferensiasi buruk dan grade tinggi, yang menandakan agresivitas kanker. Faktor hormonal juga memengaruhi status kelangsungan hidup, di mana pasien dengan status hormon estrogen dan progesteron positif menunjukkan kecenderungan hidup yang lebih tinggi, kemungkinan karena respons yang lebih baik terhadap terapi hormonal. Karakteristik demografis seperti ras dan status pernikahan juga menunjukkan perbedaan distribusi yang dapat memengaruhi akses terhadap pengobatan atau dukungan sosial, meskipun dampaknya tidak setajam faktor klinis. Insight ini menunjukkan pentingnya diagnosis dini, evaluasi lengkap terhadap staging dan status hormon, serta pendekatan holistik dalam pengobatan kanker.
 
+- Kolom Numerikal terhadap kolom Status:
 ![BivariateAnalysis2.1](img/BivariateAnalysis2.1.png)  
 ![BivariateAnalysis2.2](img/BivariateAnalysis2.2.png)  
 ![BivariateAnalysis2.3](img/BivariateAnalysis2.3.png)  
 ![BivariateAnalysis2.4](img/BivariateAnalysis2.4.png)  
 ![BivariateAnalysis2.5](img/BivariateAnalysis2.5.png)  
-Hubungan antara `Survival Months` dan `Status` sangat jelas: pasien `Alive` cenderung memiliki waktu survival yang jauh lebih panjang dibanding yang `Dead`. Korelasi ini sangat penting dan dapat dimanfaatkan sebagai fitur prediktif kuat.
+Berdasarkan analisis bivariate antara kolom numerik dengan kolom target Status, terlihat adanya perbedaan distribusi yang cukup jelas antara pasien yang masih hidup (Alive) dan yang meninggal (Dead). Secara umum, pasien yang meninggal memiliki nilai median yang lebih tinggi pada beberapa variabel seperti Age, Tumor Size, dan Regional Node Positive, yang mengindikasikan bahwa semakin tua usia pasien dan semakin besar ukuran tumor serta jumlah node limfa positif, maka semakin tinggi risiko kematian. Sementara itu, variabel Survival Months menunjukkan perbedaan mencolok, di mana pasien yang masih hidup memiliki masa survival yang lebih panjang dibandingkan yang meninggal, yang tentu saja sesuai secara logis. Variabel seperti Regional Node Examined juga menunjukkan kecenderungan nilai yang sedikit lebih tinggi pada pasien yang masih hidup, yang mungkin berkaitan dengan intensitas pemeriksaan dan penanganan medis yang lebih menyeluruh. Secara keseluruhan, insight ini memperkuat pentingnya deteksi dan penanganan dini, serta menunjukkan bahwa karakteristik numerik pasien dapat menjadi indikator penting dalam memprediksi status kelangsungan hidup.
 
 #### 4. Heatmap Korelasi Antar Variabel Numerik
 
 ![Korelasi_variabel_numerikal](img/Korelasi_variabel_numerikal.png)  
-Analisis korelasi antar fitur numerik mengungkap beberapa pola:
 
-- Terdapat korelasi negatif yang cukup kuat antara `Status` (dalam bentuk binary encoded) dan `Survival Months`, yang sesuai dengan ekspektasi (pasien yang masih hidup memiliki nilai survival lebih tinggi).
-- `Tumor Size` dan `Regional Node Positive` memiliki korelasi positif moderat, menunjukkan bahwa tumor besar cenderung menyebar ke lebih banyak node limfa.
-- Korelasi antar fitur lainnya relatif rendah, menandakan bahwa sebagian besar fitur bersifat independen dan dapat berkontribusi unik terhadap model.
+Berdasarkan uji korelasi menggunakan heatmap menunjukkan bahwa sebagian besar variabel numerik memiliki korelasi yang lemah. Korelasi tertinggi adalah antara **Regional Node Examined** dan **Regional Node Positive** (0.41), menunjukkan bahwa semakin banyak node yang diperiksa, semakin besar kemungkinan ditemukan node positif. Korelasi lemah juga terlihat antara **Tumor Size** dan **Regional Node Positive** (0.24).
+Sementara itu, **Survival Months** berkorelasi negatif lemah dengan variabel lain, terutama **Regional Node Positive** (-0.14), yang mengindikasikan bahwa semakin banyak node positif, kemungkinan masa hidup cenderung lebih pendek. Meski korelasinya kecil, pola ini tetap relevan untuk analisis risiko.
 
 ## Data Preparation
 
@@ -140,97 +148,218 @@ Tahapan data preparation sangat penting untuk memastikan bahwa data yang digunak
 
 ### 1. Menangani Outliers
 
-Untuk memastikan kualitas data yang baik sebelum pelatihan model, langkah pertama adalah menangani outlier menggunakan metode **IQR (Interquartile Range)**. Langkah ini dilakukan dengan menghitung kuartil pertama (Q1) dan kuartil ketiga (Q3), kemudian menentukan batas bawah dan batas atas menggunakan rumus:
+Outliers pada kolom numerik seperti *Tumor Size*, *Regional Node Examined*, *Regional Node Positive*, dan *Survival Months* dihapus menggunakan metode IQR (Interquartile Range) untuk menjaga kualitas dan representasi data. Langkah ini dilakukan dengan menghitung kuartil pertama (Q1) dan kuartil ketiga (Q3), kemudian menentukan batas bawah dan batas atas menggunakan rumus:
 
 - **Lower Bound** = Q1 - 1.5 × IQR  
 - **Upper Bound** = Q3 + 1.5 × IQR
 
 ![Outliner Sesudah](img/outlier_sesudah.png)  
-Outlier yang ditemukan pada fitur seperti `Tumor Size`, `Survival Months`, dan `Regional Node Examined` dihapus untuk menjaga stabilitas distribusi data. Setelah penghapusan, jumlah sampel berkurang, namun data menjadi lebih representatif dan bebas dari nilai ekstrem.
+Outlier yang ditemukan pada fitur seperti `Tumor Size`, `Survival Months`, dan `Regional Node Examined` dihapus untuk menjaga stabilitas distribusi data. Setelah penghapusan outliers, ukuran dataset berkurang menjadi **3444 baris**, menghasilkan distribusi yang lebih bersih dan stabil untuk proses pemodelan selanjutnya.
 
 ### 2. Encoding Fitur Kategorikal
+Tahapan encoding dilakukan untuk mengubah data kategorikal menjadi format numerik agar dapat digunakan dalam algoritma machine learning. Berikut parameter yang digunakan:
 
-Karena sebagian besar fitur merupakan data kategorikal, dilakukan encoding agar dapat dibaca oleh algoritma machine learning:
+- **Binary Encoding** diterapkan pada kolom `Status` dengan mapping `{'Alive': 1, 'Dead': 0}`.
+- **One-hot Encoding** diterapkan pada kolom kategorikal lainnya seperti `Race`, `Marital Status`, `T Stage`, `N Stage`, `6th Stage`, `differentiate`, `Grade`, `A Stage`, `Estrogen Status`, dan `Progesterone Status` menggunakan `pd.get_dummies()` dengan parameter `drop_first=True` untuk menghindari multikolinearitas dengan menghapus kategori pertama pada setiap fitur.
 
-- **Binary Encoding** pada target variabel:
-  - `Status`: Alive → 1, Dead → 0
+Hasilnya adalah dataset yang seluruhnya dalam bentuk numerik dan siap digunakan untuk pemodelan.
 
-- **One-hot Encoding** diterapkan pada fitur-fitur kategorikal lainnya:
-  - `Race`, `Marital Status`, `T Stage`, `N Stage`, `6th Stage`, `differentiate`, `Grade`, `A Stage`, `Estrogen Status`, `Progesterone Status`
-
-### 3. Penyeimbangan Kelas (Undersampling)
-
-Setelah eksplorasi awal terhadap variabel target (`Status`), ditemukan bahwa data tergolong **tidak seimbang**, dengan jumlah pasien yang `Alive` lebih banyak dibandingkan `Dead`.
-Untuk menghindari bias model terhadap mayoritas kelas, dilakukan teknik **random undersampling** terhadap kelas mayoritas (`Alive`) agar jumlahnya seimbang dengan kelas minoritas (`Dead`).
-Langkah ini penting untuk meningkatkan performa model terutama pada metrik **recall dan F1-score** pada kelas minoritas, serta menghindari hasil prediksi yang timpang.
+### 3. Penyeimbangan Kelas (Oversampling)
+Setelah eksplorasi awal terhadap variabel target (`Status`), ditemukan bahwa data tergolong **tidak seimbang**, dengan jumlah pasien yang `Alive` lebih banyak dibandingkan `Dead`. Oversampling dilakukan untuk mengatasi ketidakseimbangan kelas dalam dataset dengan menduplikasi data dari kelas `Dead` hingga jumlahnya seimbang dengan kelas `Alive`. Proses ini menggunakan metode `RandomOverSampler` dengan parameter `random_state=42` untuk memastikan hasil dapat direproduksi.
+Hasil dari oversampling ini adalah data yang seimbang, dengan masing-masing kelas `Alive` dan `Dead` berjumlah 3022 data.
+Tujuan utama dari oversampling ini adalah agar model prediksi yang dibangun tidak bias terhadap kelas mayoritas dan mampu belajar secara efektif untuk mengklasifikasikan kedua kelas (`Alive` dan `Dead`). Setelah proses oversampling, data diacak ulang menggunakan `sample(frac=1, random_state=42)` untuk memastikan distribusi yang merata sebelum digunakan dalam pelatihan model. Langkah ini penting untuk meningkatkan performa model terutama pada metrik **recall dan F1-score** pada kelas minoritas, serta menghindari kecenderungan model untuk hanya memprediksi kelas mayoritas.
 
 ### 4. Pembagian Dataset
 
 Dataset yang telah dibersihkan dan diseimbangkan kemudian dibagi menjadi:
-
-- **80% data latih**
-- **20% data uji**
-
-Pembagian dilakukan menggunakan `train_test_split` dari `sklearn.model_selection` dengan stratifikasi berdasarkan variabel `Status`, agar distribusi kelas tetap seimbang di kedua subset data.
+Data latih dan data uji menggunakan fungsi `train_test_split` dengan proporsi data uji sebesar 20% (`test_size=0.2`) dan parameter `random_state=42` untuk menjaga konsistensi pembagian data agar dapat direproduksi.
+Pembagian data ini menghasilkan:
+- Data latih berukuran 4835 baris dengan 29 fitur, yang akan digunakan untuk melatih model.
+- Data uji berukuran 1209 baris dengan 29 fitur, yang akan digunakan untuk menguji performa model setelah pelatihan.
+Pembagian ini penting untuk memastikan model dapat belajar dari data yang cukup banyak, sekaligus diuji pada data yang belum pernah dilihat sebelumnya untuk mengukur kemampuan generalisasi model.
 
 ### 5. Standardisasi Fitur Numerik
 
 Beberapa fitur numerik memiliki skala yang sangat bervariasi, sehingga perlu distandarisasi agar memiliki skala yang seragam dan tidak mendominasi proses pelatihan model. Standarisasi dilakukan menggunakan `StandardScaler` dari scikit-learn, yang mengubah nilai setiap fitur menjadi distribusi dengan rata-rata 0 dan standar deviasi 1.
+Pada tahap ini, dilakukan standarisasi fitur numerik pada dataset menggunakan `StandardScaler`. Fitur numerik yang distandarisasi meliputi `Age`, `Tumor Size`, `Regional Node Examined`, `Reginol Node Positive`, dan `Survival Months`.
+Proses standarisasi dilakukan dengan:
+- `fit_transform` pada data latih, untuk menghitung parameter skala dan menerapkannya,
+- `transform` pada data uji, menggunakan parameter yang sama dari data latih agar konsisten.
 
-Fitur-fitur yang distandarisasi adalah sebagai berikut:
-- `Age`
-- `Tumor Size`
-- `Regional Node Examined`
-- `Reginol Node Positive`
-- `Survival Months`
+Output menunjukkan nilai fitur numerik setelah standarisasi pada beberapa sampel data latih.
+
 ## Modeling
+Untuk menyelesaikan permasalahan klasifikasi status kelangsungan hidup pasien kanker payudara, beberapa algoritma machine learning digunakan dan dibandingkan performanya. Tahapan modeling mencakup pelatihan model, evaluasi awal, serta pemilihan model terbaik berdasarkan metrik yang relevan.
 
-Pada tahap ini, dilakukan pembangunan model klasifikasi untuk memprediksi status kelangsungan hidup pasien kanker payudara (alive atau dead) berdasarkan data klinis. Lima algoritma machine learning diterapkan dan dibandingkan performanya, yaitu:
+### **Algoritma yang digunakan**
 
-- AdaBoostClassifier
-- LinearDiscriminantAnalysis
-- RandomForestClassifier
-- LogisticRegression
-- LGBMClassifier
+Berikut adalah 5 model terbaik yang dipilih untuk membangun klasifikasi status kelangsungan hidup pasien kanker payudara:
 
-Pemilihan algoritma dilakukan untuk membandingkan berbagai pendekatan seperti model linear, ensembel, dan boosting.
+**a. ExtraTreesClassifier**
 
-### Tahapan Modeling
+  ExtraTreesClassifier adalah model ensemble berbasis pohon keputusan yang menggabungkan banyak pohon dengan randomisasi tinggi pada pemilihan split, bertujuan untuk mengurangi overfitting dan meningkatkan generalisasi.  
 
-Setiap model dilatih menggunakan data hasil preprocessing dan diuji menggunakan metrik klasifikasi yang meliputi: **accuracy**, **precision**, **recall**, dan **f1-score** untuk masing-masing kelas (Alive dan Dead).
+  Parameter utama:  
+  - `random_state=42`  
 
-### Hasil Evaluasi Model
+  Kelebihan:  
+  - Cepat dalam pelatihan karena menggunakan seluruh data tanpa bootstrap sampling.  
+  - Menghasilkan model yang stabil dan tahan terhadap overfitting.  
 
-| Model                     | Accuracy | F1-score (Alive) | F1-score (Dead) |
-|---------------------------|----------|------------------|-----------------|
-| AdaBoostClassifier        | 91%      | 0.94             | 0.68            |
-| LinearDiscriminantAnalysis| 90%      | 0.94             | 0.66            |
-| RandomForestClassifier    | 91%      | 0.95             | 0.69            |
-| LogisticRegression        | 90%      | 0.94             | 0.66            |
-| LGBMClassifier            | 89%      | 0.93             | 0.61            |
+  Kekurangan:  
+  - Kurang mudah diinterpretasi dibanding model linear.  
 
-- Semua model menunjukkan akurasi tinggi (>89%).  
-- RandomForestClassifier memiliki performa tertinggi untuk kelas mayoritas (Alive).  
-- AdaBoostClassifier dan LinearDiscriminantAnalysis memberikan trade-off yang baik antara akurasi dan kompleksitas.  
+**b. RandomForestClassifier**  
 
-### Kesimpulan Model Terbaik
+  RandomForestClassifier membangun banyak pohon keputusan secara acak menggunakan bootstrap sampling, kemudian menggabungkan hasil voting untuk klasifikasi yang lebih stabil dan akurat.  
 
-- Jika ingin model yang **akurat dan seimbang** untuk kedua kelas, **AdaBoostClassifier** direkomendasikan.  
-- Untuk model yang **ringan dan cepat** namun tetap efektif, **LogisticRegression** atau **LinearDiscriminantAnalysis** dapat dipilih.  
-- Jika fokus pada prediksi kuat untuk pasien yang **masih hidup (Alive)**, **RandomForestClassifier** adalah pilihan yang tepat.  
+  Parameter utama:  
+  - `random_state=42`  
 
-Pemilihan model terbaik dapat disesuaikan dengan kebutuhan sistem dan tujuan aplikasi, terutama terkait sensitivitas terhadap pasien berisiko tinggi (kelas Dead).
+  Kelebihan:  
+  - Mengurangi risiko overfitting pada pohon tunggal.  
+  - Cocok untuk data dengan banyak fitur dan kompleksitas tinggi.  
+
+  Kekurangan:  
+  - Model kurang interpretable.  
+  - Komputasi lebih berat dibanding pohon tunggal.  
+
+**c. XGBClassifier**  
+
+  XGBClassifier menggunakan boosting gradien yang secara iteratif memperbaiki kesalahan model sebelumnya dengan meminimalkan loss function. Model ini dikenal cepat dan memiliki performa tinggi.  
+
+  Parameter utama:  
+  - `use_label_encoder=False`  
+  - `eval_metric='logloss'`  
+  - `random_state=42`  
+
+  Kelebihan:  
+  - Efisien dan akurat dengan kemampuan regularisasi untuk mencegah overfitting.  
+  - Mendukung berbagai konfigurasi parameter untuk optimasi.  
+
+  Kekurangan:  
+  - Membutuhkan tuning parameter yang cermat.  
+  - Proses training relatif lebih lama.  
+
+**d. DecisionTreeClassifier** 
+
+  DecisionTreeClassifier membangun pohon keputusan yang membagi data berdasarkan fitur secara hierarkis untuk melakukan klasifikasi.  
+
+  Parameter utama:  
+  - `random_state=42`  
+
+  Kelebihan:  
+  - Mudah dipahami dan diinterpretasi.  
+  - Tidak memerlukan banyak pra-pemrosesan data.  
+
+  Kekurangan:  
+  - Rentan overfitting terutama pada data kecil.  
+  - Sensitif terhadap perubahan data.  
+
+**e. BaggingClassifier**  
+
+  BaggingClassifier adalah metode ensemble yang melatih beberapa model dasar pada bootstrap sample dan menggabungkan hasilnya dengan voting untuk meningkatkan akurasi dan stabilitas.  
+
+  Parameter utama:  
+  - `random_state=42`  
+
+  Kelebihan:  
+  - Mengurangi varians dan overfitting pada model dasar.  
+  - Meningkatkan performa dan stabilitas prediksi.  
+
+  Kekurangan:  
+  - Model menjadi lebih kompleks dan kurang interpretatif.  
+  - Membutuhkan komputasi lebih besar dibanding model tunggal.  
 
 ## Evaluation
 
-Model dievaluasi menggunakan metrik klasifikasi sebagai berikut:
+Tahap evaluasi berfungsi untuk mengukur performa model dan memastikan apakah solusi yang dikembangkan mampu menjawab *problem statement* serta mencapai *business goals* yang telah ditentukan pada tahap *Business Understanding*.
 
-- **Accuracy**: Proporsi prediksi yang benar dari total prediksi.  
-- **Precision**: Kemampuan model menghindari false positive.  
-- **Recall**: Kemampuan model dalam mendeteksi semua kasus positif.  
-- **F1-Score**: Rata-rata harmonis dari precision dan recall, terutama penting saat data tidak seimbang.
+### Metrik Evaluasi
 
-Dengan metrik ini, proyek memastikan bahwa model tidak hanya akurat secara keseluruhan, tetapi juga mampu mengenali kasus pasien yang berisiko tinggi secara efektif.
+Beberapa metrik digunakan untuk mengevaluasi performa model klasifikasi secara komprehensif:
+
+1. **Accuracy**  
+   Persentase prediksi yang benar terhadap total keseluruhan prediksi.
+
+   Accuracy = (TP + TN) / (TP + TN + FP + FN) * 100
+
+2. **Precision**  
+   Mengukur seberapa banyak prediksi positif yang benar-benar positif (*reliability of positive prediction*).
+
+   Precision = TP / (TP + FP)
+
+3. **Recall (Sensitivity)**  
+   Mengukur seberapa banyak data positif yang berhasil teridentifikasi dengan benar (*ability to detect positive cases*).
+
+   Recall = TP / (TP + FN)
+
+4. **F1-Score**  
+   Merupakan harmonic mean dari Precision dan Recall. Cocok digunakan saat terjadi ketidakseimbangan kelas.
+
+   F1-Score = 2 * (Precision * Recall) / (Precision + Recall)
+
+### Catatan Penting (Konteks Medis)
+
+Dalam kasus medis seperti prediksi penyakit kanker payudara:
+
+- **False Negative (FN)** sangat berbahaya karena pasien yang sebenarnya berisiko tidak terdeteksi.
+- **Recall** menjadi sangat penting agar kasus berisiko tidak terlewatkan.
+- **Precision** juga penting agar tidak terlalu banyak *false alarms* (False Positive).
+
+## Hasil Evaluasi Model
+
+Berikut adalah ringkasan performa beberapa model berdasarkan metrik utama:
+
+| Model                      | Accuracy | Precision | Recall | F1-Score |
+|---------------------------|----------|-----------|--------|----------|
+| **Extra Trees Classifier**        | 0.99     | 0.99      | 0.97   | 0.98     |
+| **Random Forest Classifier**     | 0.98     | 1.00      | 0.97   | 0.98     |
+| **XGBoost Classifier**           | 0.97     | 0.99      | 0.95   | 0.97     |
+| **Decision Tree Classifier**     | 0.95     | 1.00      | 0.89   | 0.94     |
+| **Bagging Classifier**           | 0.97     | 1.00      | 0.93   | 0.96     |
+
+- **Extra Trees Classifier** memberikan performa tertinggi secara keseluruhan dengan F1-Score 0.98 dan akurasi 99%.
+- **Random Forest** sangat kuat dalam Precision (1.00) dan hanya memiliki 0 False Positives.
+- **Decision Tree** memiliki Recall terendah (0.89), artinya lebih banyak kasus positif yang tidak terdeteksi.
+- **XGBoost** dan **Bagging** menunjukkan performa stabil dan sangat baik, namun masih berada di bawah Extra Trees dalam hal keseimbangan metrik.
+
+### Visualisasi Perbandingan Model 
+![Perbandingan Model](img/perbandingan_model.png)  
+
+
+### Kesimpulan model terbaik
+
+Berdasarkan hasil evaluasi di atas, model **Extra Trees Classifier** dapat dipilih sebagai model terbaik dalam konteks ini karena memiliki akurasi dan F1-Score tertinggi serta keseimbangan Precision dan Recall yang sangat baik. Ini penting untuk kasus medis di mana kita ingin meminimalkan kesalahan prediksi, terutama dalam mendeteksi kasus penyakit jantung.
+
+
+## Analisis Hasil dan Relevansi terhadap Business Understanding
+
+### Relevansi terhadap Business Goals
+Model klasifikasi yang dikembangkan berhasil memprediksi status kelangsungan hidup pasien kanker payudara dengan akurasi yang sangat tinggi (>95%). Khususnya, ExtraTreesClassifier menunjukkan performa terbaik dengan precision, recall, dan f1-score yang unggul pada kedua kelas (alive dan dead). Hal ini sejalan dengan tujuan proyek untuk menghasilkan model prediksi yang akurat dan dapat diandalkan. Selain itu, identifikasi fitur klinis penting melalui model ini dapat membantu penyusunan strategi perawatan yang lebih tepat sasaran dan personalisasi pengobatan bagi pasien.
+
+### Problem Statement
+- Memprediksi status hidup atau meninggal pasien berdasarkan data klinis.
+- Menemukan fitur klinis yang paling berpengaruh.
+- Memilih algoritma klasifikasi terbaik untuk prediksi tersebut.
+
+Evaluasi menunjukkan bahwa berbagai algoritma mampu menangani problem klasifikasi ini dengan baik, namun terdapat trade-off antara precision dan recall. Misalnya, DecisionTreeClassifier memiliki recall yang lebih rendah pada kelas positif sehingga kurang ideal jika prioritasnya adalah meminimalkan false negative (pasien yang seharusnya diprediksi meninggal tapi salah terklasifikasi hidup). Sebaliknya, ExtraTreesClassifier mampu menjaga keseimbangan tersebut dengan baik.
+
+### Target Solusi
+- Memilih model dengan akurasi tinggi dan keseimbangan antara precision dan recall untuk mengoptimalkan prediksi status pasien.
+- Menggunakan model ini untuk membantu tenaga medis dalam pengambilan keputusan klinis yang lebih informasional dan berbasis data.
+- Memastikan model dapat diaplikasikan secara praktis dengan meminimalkan kesalahan klasifikasi terutama false negative dan false positive yang berpotensi berdampak pada perawatan pasien.
+
+### Dampak Solusi
+- Meningkatkan akurasi prediksi status pasien yang berdampak pada perencanaan pengobatan yang lebih efektif dan efisien.
+- Memungkinkan fokus perawatan yang lebih personal dan tepat waktu, sehingga potensi peningkatan kualitas hidup pasien lebih besar.
+- Mempermudah dokter dan tenaga kesehatan dalam mengambil keputusan dengan dukungan data yang valid dan terpercaya.
+- Meminimalkan risiko kesalahan diagnosis yang bisa berakibat fatal, terutama dalam konteks false negative atau false positive.
+
+### Kesimpulan
+Model ExtraTreesClassifier adalah solusi terbaik untuk prediksi kelangsungan hidup pasien kanker payudara karena performanya yang unggul secara keseluruhan dan keseimbangan antara precision dan recall. Dengan model ini, target bisnis untuk mengembangkan prediksi yang akurat dan andal tercapai. Selanjutnya, hasil ini memberikan dasar kuat bagi implementasi machine learning dalam praktik klinis, mendukung pengambilan keputusan berbasis data, dan membuka peluang peningkatan kualitas perawatan pasien secara signifikan.
+
+
 
 
 
