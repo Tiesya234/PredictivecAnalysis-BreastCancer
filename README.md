@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning Terapan - Tiesya Andriani Ramadhanti
+# Laporan Proyek Machine Learning - Tiesya Andriani Ramadhanti
 
 ## Domain Proyek: Kesehatan
 
