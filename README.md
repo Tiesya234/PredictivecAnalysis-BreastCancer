@@ -357,7 +357,7 @@ Evaluasi menunjukkan bahwa berbagai algoritma mampu menangani problem klasifikas
 - Meminimalkan risiko kesalahan diagnosis yang bisa berakibat fatal, terutama dalam konteks false negative atau false positive.
 
 ### Kesimpulan
-Model ExtraTreesClassifier adalah solusi terbaik untuk prediksi kelangsungan hidup pasien kanker payudara karena performanya yang unggul secara keseluruhan dan keseimbangan antara precision dan recall. Dengan model ini, target bisnis untuk mengembangkan prediksi yang akurat dan andal tercapai. Selanjutnya, hasil ini memberikan dasar kuat bagi implementasi machine learning dalam praktik klinis, mendukung pengambilan keputusan berbasis data, dan membuka peluang peningkatan kualitas perawatan pasien secara signifikan.
+Model ExtraTreesClassifier merupakan solusi terbaik dalam klasifikasi status kelangsungan hidup pasien kanker payudara karena performanya yang unggul secara keseluruhan serta keseimbangan antara precision dan recall. Dengan menggunakan model ini, tujuan bisnis untuk mengembangkan sistem klasifikasi yang akurat dan andal dapat tercapai. Hasil tersebut memberikan landasan yang kuat bagi penerapan machine learning dalam praktik klinis, mendukung pengambilan keputusan berbasis data, serta membuka peluang untuk peningkatan kualitas perawatan pasien secara signifikan.
 
 
 
