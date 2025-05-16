@@ -23,7 +23,7 @@ Dengan memanfaatkan data klinis dan algoritma machine learning, proyek ini bertu
 
 - Mengembangkan model klasifikasi machine learning untuk memprediksi status hidup atau meninggal pasien kanker payudara.
 - Mengidentifikasi fitur klinis yang paling berkontribusi terhadap prediksi model.
-- Membandingkan performa beberapa algoritma klasifikasi (AdaBoost, LDA, Random Forest, Logistic Regression, dan LGBM) guna menemukan model terbaik berdasarkan metrik evaluasi.
+- Membandingkan performa beberapa algoritma klasifikasi (ExtraTreesClassifier, RandomForestClassifier, XGBClassifier, DecisionTreeClassifier, dan BaggingClassifier) guna menemukan model terbaik berdasarkan metrik evaluasi.
 
 ### Solution Statements
 
