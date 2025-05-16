@@ -330,7 +330,7 @@ Berikut adalah ringkasan performa beberapa model berdasarkan metrik utama:
 
 ### Kesimpulan model terbaik
 
-Berdasarkan hasil evaluasi di atas, model **Extra Trees Classifier** dapat dipilih sebagai model terbaik dalam konteks ini karena memiliki akurasi dan F1-Score tertinggi serta keseimbangan Precision dan Recall yang sangat baik. Ini penting untuk kasus medis di mana kita ingin meminimalkan kesalahan prediksi, terutama dalam mendeteksi kasus penyakit jantung.
+Berdasarkan hasil evaluasi, model Extra Trees Classifier dipilih sebagai model terbaik karena menunjukkan akurasi dan F1-Score tertinggi serta keseimbangan Precision dan Recall yang sangat baik. Hal ini sangat penting dalam konteks medis, di mana klasifikasi status kelangsungan hidup pasien kanker payudara secara akurat membantu mendukung pengambilan keputusan klinis dan perencanaan perawatan yang lebih tepat.
 
 
 ## Analisis Hasil dan Relevansi terhadap Business Understanding
